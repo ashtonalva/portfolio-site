@@ -2,7 +2,7 @@
 
 This is my personal portfolio website built for CPSC 349. It showcases my projects, skills, background, and includes a contact form.
 
-## 💻 How to Run the Project
+##  How to Run the Project
 
 1. Clone the repository:
 2. Open the folder:

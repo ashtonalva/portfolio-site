@@ -7,5 +7,6 @@ This is my personal portfolio website built for CPSC 349. It showcases my projec
 1. Clone the repository:
 2. Open the folder:
 3. Open `index.html` in any web browser.
+4. Or go to https://ashtonalva.github.io/portfolio-site/
 
 No additional setup required.

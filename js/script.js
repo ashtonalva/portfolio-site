@@ -116,8 +116,8 @@ const fadeObserver = new IntersectionObserver((entries) => {
 
 fadeElements.forEach(element => {
   element.style.opacity = '0';
-  element.style.transform = 'translateY(30px)';
-  element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+  element.style.transform = 'translateY(40px)';
+  element.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
   fadeObserver.observe(element);
 });
 
@@ -129,7 +129,7 @@ const heroImage = document.querySelector('.hero-image');
 
 if (heroText) {
   heroText.style.opacity = '0';
-  heroText.style.transform = 'translateY(30px)';
+  heroText.style.transform = 'translateY(40px)';
   
   setTimeout(() => {
     heroText.style.transition = 'opacity 1s ease-out, transform 1s ease-out';
@@ -140,10 +140,10 @@ if (heroText) {
 
 if (heroImage) {
   heroImage.style.opacity = '0';
-  heroImage.style.transform = 'translateX(30px)';
+  heroImage.style.transform = 'translateX(40px)';
   
   setTimeout(() => {
-    heroImage.style.transition = 'opacity 1s ease-out 0.2s, transform 1s ease-out 0.2s';
+    heroImage.style.transition = 'opacity 1s ease-out 0.3s, transform 1s ease-out 0.3s';
     heroImage.style.opacity = '1';
     heroImage.style.transform = 'translateX(0)';
   }, 300);
@@ -170,21 +170,22 @@ scrollToTopBtn.className = 'scroll-to-top';
 scrollToTopBtn.setAttribute('aria-label', 'Scroll to top');
 scrollToTopBtn.style.cssText = `
   position: fixed;
-  bottom: 30px;
-  right: 30px;
-  width: 50px;
-  height: 50px;
-  background-color: rgba(100, 255, 218, 0.1);
-  border: 1px solid #64ffda;
-  border-radius: 50%;
-  color: #64ffda;
+  bottom: 40px;
+  right: 40px;
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border: 2px solid rgba(99, 102, 241, 0.3);
+  border-radius: 16px;
+  color: white;
   cursor: pointer;
   display: none;
   align-items: center;
   justify-content: center;
   z-index: 999;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
 `;
 
 document.body.appendChild(scrollToTopBtn);
@@ -211,50 +212,37 @@ scrollToTopBtn.addEventListener('click', () => {
 });
 
 scrollToTopBtn.addEventListener('mouseenter', () => {
-  scrollToTopBtn.style.backgroundColor = 'rgba(100, 255, 218, 0.2)';
-  scrollToTopBtn.style.transform = 'translateY(-5px)';
+  scrollToTopBtn.style.transform = 'translateY(-5px) scale(1.05)';
+  scrollToTopBtn.style.boxShadow = '0 12px 40px rgba(99, 102, 241, 0.5)';
 });
 
 scrollToTopBtn.addEventListener('mouseleave', () => {
-  scrollToTopBtn.style.backgroundColor = 'rgba(100, 255, 218, 0.1)';
-  scrollToTopBtn.style.transform = 'translateY(0)';
-});
-
-// ============================================
-// Typing Effect (Optional Enhancement)
-// ============================================
-const typingElements = document.querySelectorAll('.typing-effect');
-typingElements.forEach(element => {
-  const text = element.textContent;
-  element.textContent = '';
-  element.style.borderRight = '2px solid #64ffda';
-  
-  let i = 0;
-  const typeWriter = () => {
-    if (i < text.length) {
-      element.textContent += text.charAt(i);
-      i++;
-      setTimeout(typeWriter, 100);
-    } else {
-      element.style.borderRight = 'none';
-    }
-  };
-  
-  typeWriter();
+  scrollToTopBtn.style.transform = 'translateY(0) scale(1)';
+  scrollToTopBtn.style.boxShadow = '0 8px 32px rgba(99, 102, 241, 0.3)';
 });
 
 // ============================================
 // Parallax Effect for Hero Background
 // ============================================
 const gradientOrbs = document.querySelectorAll('.gradient-orb');
+let ticking = false;
+
 window.addEventListener('scroll', () => {
-  const scrolled = window.pageYOffset;
-  const rate = scrolled * 0.5;
-  
-  gradientOrbs.forEach((orb, index) => {
-    const speed = (index + 1) * 0.1;
-    orb.style.transform = `translate(${rate * speed}px, ${rate * speed * 0.5}px)`;
-  });
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * 0.3;
+      
+      gradientOrbs.forEach((orb, index) => {
+        const speed = (index + 1) * 0.1;
+        orb.style.transform = `translate(${rate * speed}px, ${rate * speed * 0.5}px)`;
+      });
+      
+      ticking = false;
+    });
+    
+    ticking = true;
+  }
 });
 
 // ============================================
@@ -263,7 +251,7 @@ window.addEventListener('scroll', () => {
 const projectCards = document.querySelectorAll('.project-card');
 projectCards.forEach(card => {
   card.addEventListener('mouseenter', function() {
-    this.style.transform = 'translateY(-10px) scale(1.02)';
+    this.style.transform = 'translateY(-12px) scale(1.02)';
   });
   
   card.addEventListener('mouseleave', function() {
@@ -283,10 +271,10 @@ skillItems.forEach((item, index) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         setTimeout(() => {
-          entry.target.style.transition = 'all 0.3s ease';
+          entry.target.style.transition = 'all 0.4s cubic-bezier(0.4, 0, 0.2, 1)';
           entry.target.style.opacity = '1';
           entry.target.style.transform = 'scale(1)';
-        }, index * 50);
+        }, index * 30);
         skillObserver.unobserve(entry.target);
       }
     });
@@ -300,7 +288,7 @@ skillItems.forEach((item, index) => {
 // ============================================
 window.addEventListener('load', () => {
   document.body.style.opacity = '0';
-  document.body.style.transition = 'opacity 0.5s ease-in';
+  document.body.style.transition = 'opacity 0.6s ease-in';
   
   setTimeout(() => {
     document.body.style.opacity = '1';
@@ -308,7 +296,31 @@ window.addEventListener('load', () => {
 });
 
 // ============================================
+// Smooth Scroll for All Anchor Links
+// ============================================
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const href = this.getAttribute('href');
+    if (href !== '#' && href.length > 1) {
+      e.preventDefault();
+      const targetId = href.substring(1);
+      const targetSection = document.getElementById(targetId);
+      
+      if (targetSection) {
+        const navHeight = navbar.offsetHeight;
+        const targetPosition = targetSection.offsetTop - navHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }
+  });
+});
+
+// ============================================
 // Console Message
 // ============================================
-console.log('%c👋 Hello! Thanks for checking out my portfolio!', 'color: #64ffda; font-size: 16px; font-weight: bold;');
-console.log('%cWant to see the code? Check out the repository!', 'color: #8892b0; font-size: 12px;');
+console.log('%c👋 Hello! Thanks for checking out my portfolio!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+console.log('%cWant to see the code? Check out the repository!', 'color: #8b8ba7; font-size: 12px;');

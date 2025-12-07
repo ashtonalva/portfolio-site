@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Edge QUIC CV - Real-Time Multi-Feed Video Dashboard</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <nav>
+    <ul>
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="../about.html">About</a></li>
+      <li><a href="../projects.html">Projects</a></li>
+      <li><a href="../skills.html">Skills</a></li>
+      <li><a href="../contact.html">Contact</a></li>
+    </ul>
+  </nav>
+  <main>
+    <section class="project-detail">
+      <h1>Edge QUIC CV - Real-Time Multi-Feed Video Dashboard</h1>
+      <p>Developed a real-time video streaming system that receives video from edge devices (Raspberry Pi) via QUIC protocol and displays multiple synchronized video feeds in a web dashboard. The server processes incoming frames and creates three separate feeds: original raw video, processed feed with annotations, and detection overlay for visualization. Implemented improved WebSocket message handling that sends each feed independently with frame synchronization IDs, ensuring reliability and easier debugging. Created automated startup scripts that handle environment setup, dependency installation, SSL certificate generation, and frontend building, reducing setup time from 10+ manual steps to a single command. The dashboard features a responsive grid layout with color-coded borders for each feed, real-time status indicators, and a debug panel for troubleshooting. Built with React for the frontend, Python with asyncio for the server, OpenCV for video processing, and WebSocket for real-time communication.</p>
+      <p><strong>Technologies Used:</strong> React, TypeScript, Python, QUIC (aioquic), WebSocket, OpenCV, YOLO, Flask, asyncio, NumPy</p>
+      <a href="https://github.com/jacobfishel/edge-quic-cv" target="_blank" rel="noopener noreferrer" class="button-link">View on GitHub</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Ashton Alva. All rights reserved.</p>
+    <p>
+      <a href="https://github.com/ashtonalva" target="_blank" rel="noopener noreferrer">GitHub</a> |
+      <a href="https://linkedin.com/in/ashtonalva" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
+      <a href="mailto:ashtondarryl@gmail.com">Email</a>
+    </p>
+  </footer>
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
+

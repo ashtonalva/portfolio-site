@@ -94,7 +94,7 @@
   <!-- About Section -->
   <section id="about" class="about">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">01.</span>
         <h2 class="section-title">About Me</h2>
         <div class="section-line"></div>
@@ -129,7 +129,7 @@
   <!-- Education Section -->
   <section id="education" class="education">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">02.</span>
         <h2 class="section-title">Education</h2>
         <div class="section-line"></div>
@@ -156,7 +156,7 @@
   <!-- Experience Section -->
   <section id="experience" class="experience">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">03.</span>
         <h2 class="section-title">Experience</h2>
         <div class="section-line"></div>
@@ -185,12 +185,12 @@
   <!-- Projects Section -->
   <section id="projects" class="projects">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">04.</span>
         <h2 class="section-title">Some Things I've Built</h2>
         <div class="section-line"></div>
       </div>
-      <div class="project-filters" role="tablist" aria-label="Filter projects">
+      <div class="project-filters scroll-reveal" role="tablist" aria-label="Filter projects">
         <button type="button" class="filter-btn active" data-filter="all">All</button>
         <button type="button" class="filter-btn" data-filter="mobile">Mobile</button>
         <button type="button" class="filter-btn" data-filter="web">Web</button>
@@ -413,7 +413,7 @@
   <!-- Skills Section -->
   <section id="skills" class="skills">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">05.</span>
         <h2 class="section-title">Skills & Technologies</h2>
         <div class="section-line"></div>
@@ -481,7 +481,7 @@
   <!-- Certifications Section -->
   <section id="certifications" class="certifications">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">06.</span>
         <h2 class="section-title">Certifications</h2>
         <div class="section-line"></div>
@@ -527,33 +527,43 @@
   <!-- Contact Section -->
   <section id="contact" class="contact">
     <div class="container">
-      <div class="section-header">
+      <div class="section-header scroll-reveal">
         <span class="section-number">07.</span>
         <h2 class="section-title">Get In Touch</h2>
         <div class="section-line"></div>
       </div>
       <div class="contact-content">
-        <p class="contact-description">
+        <p class="contact-description scroll-reveal">
           I'm currently looking for new opportunities, my inbox is always open. 
           Whether you have a question or just want to say hi, I'll try my best to get back to you!
         </p>
-        <div class="contact-info">
+        <div class="contact-info scroll-reveal">
           <p><strong>Location:</strong> Fullerton, California</p>
           <p><strong>Phone:</strong> <a href="tel:3467029899">346-702-9899</a></p>
           <p><strong>Email:</strong> <a href="mailto:ashtondarryl@gmail.com">ashtondarryl@gmail.com</a></p>
         </div>
         <!-- Replace YOUR_FORM_ID with your Formspree form ID from https://formspree.io -->
-        <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
-          <input type="hidden" name="_subject" value="Portfolio contact form submission">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" required placeholder="Your name">
-          <label for="contact-email">Email</label>
-          <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" required rows="5" placeholder="Your message"></textarea>
-          <button type="submit" class="btn btn-primary btn-large">Send Message</button>
-        </form>
-        <p class="contact-form-note">Or email me directly: <a href="mailto:ashtondarryl@gmail.com">ashtondarryl@gmail.com</a></p>
+        <div class="contact-form-card scroll-reveal">
+          <form class="contact-form" id="contact-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+            <input type="hidden" name="_subject" value="Portfolio contact form submission">
+            <div class="contact-form-row">
+              <div class="contact-form-field">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" name="name" required placeholder="Your name">
+              </div>
+              <div class="contact-form-field">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" name="email" required placeholder="your@email.com">
+              </div>
+            </div>
+            <div class="contact-form-field">
+              <label for="contact-message">Message</label>
+              <textarea id="contact-message" name="message" required rows="5" placeholder="Your message"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-large btn-block">Send Message</button>
+          </form>
+        </div>
+        <p class="contact-form-note scroll-reveal">Or email me directly: <a href="mailto:ashtondarryl@gmail.com">ashtondarryl@gmail.com</a></p>
         <div class="social-links">
           <a href="https://github.com/ashtonalva" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">

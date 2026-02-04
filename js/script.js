@@ -97,7 +97,38 @@ navLinks.forEach(link => {
 // ============================================
 // Scroll Animations
 // ============================================
-const fadeElements = document.querySelectorAll('.project-card, .skill-category, .about-content, .contact-content, .education-item, .timeline-content, .cert-category');
+const SCROLL_REVEAL_OPTS = {
+  threshold: 0.08,
+  rootMargin: '0px 0px -18% 0px'
+};
+const REVEAL_TRANSITION = 'opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1), transform 0.65s cubic-bezier(0.4, 0, 0.2, 1)';
+
+// Staggered reveal for .scroll-reveal (section headers, filters, contact bits)
+const scrollRevealElements = document.querySelectorAll('.scroll-reveal');
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      const el = entry.target;
+      const delay = parseInt(el.dataset.revealDelay, 10) || 0;
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, delay);
+      revealObserver.unobserve(el);
+    }
+  });
+}, SCROLL_REVEAL_OPTS);
+
+scrollRevealElements.forEach((el, i) => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = REVEAL_TRANSITION;
+  el.dataset.revealDelay = String(Math.min(i * 60, 240));
+  revealObserver.observe(el);
+});
+
+// Block-level fade (cards, sections) – trigger when section is in view
+const fadeElements = document.querySelectorAll('.project-card, .skill-category, .about-content, .education-item, .timeline-content, .cert-category');
 
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
@@ -105,19 +136,16 @@ const fadeObserver = new IntersectionObserver((entries) => {
       setTimeout(() => {
         entry.target.style.opacity = '1';
         entry.target.style.transform = 'translateY(0)';
-      }, index * 100);
+      }, index * 80);
       fadeObserver.unobserve(entry.target);
     }
   });
-}, {
-  threshold: 0.1,
-  rootMargin: '0px 0px -50px 0px'
-});
+}, SCROLL_REVEAL_OPTS);
 
 fadeElements.forEach(element => {
   element.style.opacity = '0';
-  element.style.transform = 'translateY(40px)';
-  element.style.transition = 'opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1), transform 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+  element.style.transform = 'translateY(24px)';
+  element.style.transition = REVEAL_TRANSITION;
   fadeObserver.observe(element);
 });
 

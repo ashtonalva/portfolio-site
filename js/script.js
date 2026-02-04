@@ -202,8 +202,8 @@ scrollToTopBtn.style.cssText = `
   right: 40px;
   width: 56px;
   height: 56px;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  border: 2px solid rgba(99, 102, 241, 0.3);
+  background: linear-gradient(135deg, #dc2626, #b91c1c);
+  border: 2px solid rgba(220, 38, 38, 0.3);
   border-radius: 16px;
   color: white;
   cursor: pointer;
@@ -213,7 +213,7 @@ scrollToTopBtn.style.cssText = `
   z-index: 999;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 8px 32px rgba(220, 38, 38, 0.3);
 `;
 
 document.body.appendChild(scrollToTopBtn);
@@ -241,12 +241,12 @@ scrollToTopBtn.addEventListener('click', () => {
 
 scrollToTopBtn.addEventListener('mouseenter', () => {
   scrollToTopBtn.style.transform = 'translateY(-5px) scale(1.05)';
-  scrollToTopBtn.style.boxShadow = '0 12px 40px rgba(99, 102, 241, 0.5)';
+  scrollToTopBtn.style.boxShadow = '0 12px 40px rgba(220, 38, 38, 0.5)';
 });
 
 scrollToTopBtn.addEventListener('mouseleave', () => {
   scrollToTopBtn.style.transform = 'translateY(0) scale(1)';
-  scrollToTopBtn.style.boxShadow = '0 8px 32px rgba(99, 102, 241, 0.3)';
+  scrollToTopBtn.style.boxShadow = '0 8px 32px rgba(220, 38, 38, 0.3)';
 });
 
 // ============================================
@@ -403,5 +403,5 @@ if (themeToggle) {
 // ============================================
 // Console Message
 // ============================================
-console.log('%c👋 Hello! Thanks for checking out my portfolio!', 'color: #6366f1; font-size: 16px; font-weight: bold;');
+console.log('%c👋 Hello! Thanks for checking out my portfolio!', 'color: #dc2626; font-size: 16px; font-weight: bold;');
 console.log('%cWant to see the code? Check out the repository!', 'color: #8b8ba7; font-size: 12px;');

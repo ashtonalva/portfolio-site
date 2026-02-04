@@ -97,7 +97,7 @@ navLinks.forEach(link => {
 // ============================================
 // Scroll Animations
 // ============================================
-const fadeElements = document.querySelectorAll('.project-card, .skill-category, .about-content, .contact-content');
+const fadeElements = document.querySelectorAll('.project-card, .skill-category, .about-content, .contact-content, .education-item, .timeline-content, .cert-category');
 
 const fadeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry, index) => {
@@ -318,6 +318,59 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ============================================
+// Project Filters
+// ============================================
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCardsAll = document.querySelectorAll('#projects-grid .project-card');
+
+if (filterBtns.length && projectCardsAll.length) {
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const filter = btn.getAttribute('data-filter');
+      filterBtns.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      projectCardsAll.forEach(card => {
+        const category = card.getAttribute('data-category');
+        const show = filter === 'all' || category === filter;
+        card.classList.toggle('filter-hidden', !show);
+      });
+    });
+  });
+}
+
+// ============================================
+// Theme Toggle (Dark / Light)
+// ============================================
+const themeToggle = document.getElementById('theme-toggle');
+const THEME_KEY = 'portfolio-theme';
+
+function setTheme(theme) {
+  document.body.classList.remove('theme-dark', 'theme-light');
+  document.body.classList.add(theme === 'light' ? 'theme-light' : 'theme-dark');
+  try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
+}
+
+function initTheme() {
+  try {
+    const saved = localStorage.getItem(THEME_KEY);
+    if (saved === 'light') setTheme('light');
+    else setTheme('dark');
+  } catch (e) {
+    const prefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
+    setTheme(prefersLight ? 'light' : 'dark');
+  }
+}
+
+initTheme();
+
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
+    const isLight = document.body.classList.contains('theme-light');
+    setTheme(isLight ? 'dark' : 'light');
+  });
+}
 
 // ============================================
 // Console Message
